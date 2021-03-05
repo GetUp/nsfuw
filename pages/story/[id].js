@@ -4,38 +4,22 @@ import Head from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 
-export function getStaticPaths() {
-  return { paths: [], fallback: true }
-}
-
-export async function getStaticProps({ params }) {
-  const title = params.id
-
+export async function getServerSideProps({ params: props }) {
   return {
-    props: { title },
-    revalidate: false,
+    props,
   }
 }
 
-export default function Story(props) {
-  const router = useRouter()
-  if (router.isFallback) {
-    return (
-      <main>
-        <p>Page loading...</p>
-      </main>
-    )
-  }
+export default function Story({ id }) {
 
-  const { title } = props
   return (
     <div className="container">
-      <Head title={title} />
+      <Head title={id} />
 
       <main>
         <Header title="Story page!" />
 
-        <h3>Story page!</h3>
+        <h3>Story page for {id}!</h3>
 
         <Link href={`/`}>
           <a>Go home</a>
