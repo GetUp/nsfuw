@@ -12,11 +12,16 @@ export default function Form() {
 
   const onChange = setter => event => setter(event.target.value)
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log({ service, story })
     // const [shareUrl, imageUrl] = uploadImage()
-
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({ service, story })
+    }
+    const response = await fetch(`/.netlify/functions/form-submission`, options)
+    const body = await response.json()
+    console.log(JSON.stringify(body))
   }
 
   return (
