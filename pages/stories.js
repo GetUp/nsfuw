@@ -2,8 +2,19 @@ import Link from 'next/link'
 import Head from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import { getStories } from '../lib/airtable'
 
-export default function Stories() {
+export async function getServerSideProps(_context) {
+  const stories = await getStories()
+
+  return {
+    props: {
+      stories,
+    },
+  }
+}
+
+export default function Stories({ stories }) {
 
   return (
     <div className="container">
@@ -18,9 +29,13 @@ export default function Stories() {
           <a>Go home</a>
         </Link>
 
-        <Link href={`/story/123`}>
-          <a>Story 123</a>
-        </Link>
+        {stories.map(({ ID }) => (
+          <div key={ID}>
+            <Link href={`/story/${ID}`}>
+              <a>{ID}</a>
+            </Link>
+          </div>
+        ))}
 
       </main>
 
