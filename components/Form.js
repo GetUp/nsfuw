@@ -22,8 +22,9 @@ export default function Form({ step, setStep, setId }) {
     setLoading(true)
     setSubmissionResult([null, ''])
     try {
-      const id = await uploadImage(shareImageId)
-      await persistStory({ id, serviceCode, story })
+      const response = await persistStory({ serviceCode, story })
+      const id = response.id.substring(3)
+      await uploadImage(shareImageId, id)
       setId(id)
       setSubmissionResult([true, ''])
       setTimeout(() => setStep(3), 1000)
