@@ -31,6 +31,19 @@ main {
   align-items: center;
 }
 
-.serviceOption {
+.service-option {
   display: block;
+}
+
+#share-image {
+  background-image: url('/background.jpg');
+  /* width: 100%; */
+}
+
+.success {
+  background-color: lightgreen;
+}
+
+.error {
+  background-color: lightpink;
 }

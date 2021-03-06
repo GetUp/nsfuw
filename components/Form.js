@@ -1,45 +1,58 @@
 import { useState } from 'react'
+import StoryImage from '@components/StoryImage'
+import uploadImage from 'lib/uploadImage'
+import persistStory from 'lib/persistStory'
+import Loading from './Loading'
 
+const shareImageId = "share-image"
 const services = [
-  "Jobactive",
-  "ParentsNext",
-  "Disability Employment Services",
+  { code: "JA", name: "Jobactive" },
+  { code: "PN", name: "ParentsNext" },
+  { code: "DES", name: "Disability Employment Services" },
 ]
 
 export default function Form() {
-  const [service, setService] = useState('Jobactive')
+  const [serviceCode, setServiceCode] = useState('JA')
   const [story, setStory] = useState('Your story here')
+  const [submissionResult, setSubmissionResult] = useState([null, '']) // success bool, message
+  const [loading, setLoading] = useState(false)
 
   const onChange = setter => event => setter(event.target.value)
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // const [shareUrl, imageUrl] = uploadImage()
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ service, story })
+    setLoading(true)
+    setSubmissionResult([null, ''])
+    try {
+      const id = await uploadImage(shareImageId)
+      await persistStory({ id, serviceCode, story })
+      setSubmissionResult([true, ''])
+    } catch (error) {
+      console.error(error)
+      setSubmissionResult([false, JSON.stringify(error.message)])
+    } finally {
+      setLoading(false)
     }
-    const response = await fetch(`/.netlify/functions/form-submission`, options)
-    const body = await response.json()
-    console.log(JSON.stringify(body))
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        {services.map(s => (
-          <label key={s} className="serviceOption">
+        {services.map(({ code, name }) => (
+          <label key={code} className="service-option">
             <input
               type="radio"
               name="service"
-              value={s}
-              checked={s === service}
-              onChange={onChange(setService)}
+              value={code}
+              checked={code === serviceCode}
+              onChange={onChange(setServiceCode)}
             />
-            {s}
+            {name}
           </label>
         ))}
       </div>
+
+      <StoryImage {...{ shareImageId, serviceCode, story }} />
 
       <div>
         <label>
@@ -58,7 +71,22 @@ export default function Form() {
       </div>
 
       <div>
-        <input type="submit" value="Submit" />
+        {submissionResult[0] === true && (
+          <div className="success">
+            Successfully uploaded!
+          </div>
+        )}
+
+        {submissionResult[0] === false && (
+          <div className="error">
+            {submissionResult[1]}
+          </div>
+        )}
+
+        {loading
+          ? <Loading />
+          : <input type="submit" value="Share" />
+        }
       </div>
     </form>
   )

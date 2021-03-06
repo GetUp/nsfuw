@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Head from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
-import { getStories } from '../lib/airtable'
+import getStories from '../lib/getStories'
 
 export async function getServerSideProps(_context) {
   const stories = await getStories()
