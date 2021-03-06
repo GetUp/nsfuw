@@ -21,6 +21,8 @@ export default function Share({ step, setStep, id }) {
   const borderRadius = 5
   const className = 'share-icon'
   const whatsappWindow = { windowWidth: 624, windowHeight: 590 }
+  const openShareDialogOnClick = true // force new window for email
+  const onClick = () => { } // prevent parent window also opening email
 
   return (<>
     <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} />
@@ -44,11 +46,10 @@ export default function Share({ step, setStep, id }) {
       </WhatsappShareButton>
     </div>
     <div>
-      <EmailShareButton {...{ url, body, openShareDialogOnClick: true, className }}>
+      <EmailShareButton {...{ url, body, openShareDialogOnClick, onClick, className }}>
         <EmailIcon {...{ size, borderRadius, round }} />
         Share via Email
       </EmailShareButton>
     </div>
-
   </>)
 }
