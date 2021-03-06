@@ -11,13 +11,11 @@ const services = [
   { code: "DES", name: "Disability Employment Services" },
 ]
 
-export default function Form() {
+export default function Form({ step, setStep, setId }) {
   const [serviceCode, setServiceCode] = useState('JA')
   const [story, setStory] = useState('Your story here')
   const [submissionResult, setSubmissionResult] = useState([null, '']) // success bool, message
   const [loading, setLoading] = useState(false)
-
-  const onChange = setter => event => setter(event.target.value)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -26,7 +24,9 @@ export default function Form() {
     try {
       const id = await uploadImage(shareImageId)
       await persistStory({ id, serviceCode, story })
+      setId(id)
       setSubmissionResult([true, ''])
+      setTimeout(() => setStep(3), 1000)
     } catch (error) {
       console.error(error)
       setSubmissionResult([false, JSON.stringify(error.message)])
@@ -37,57 +37,61 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        {services.map(({ code, name }) => (
-          <label key={code} className="service-option">
-            <input
-              type="radio"
-              name="service"
-              value={code}
-              checked={code === serviceCode}
-              onChange={onChange(setServiceCode)}
+      {step === 1 && (
+        <div>
+          {services.map(({ code, name }) => (
+            <img
+              key={code}
+              src={`/${code}.png`}
+              alt={`${name} logo`}
+              className="service-logo"
+              onClick={() => {
+                setServiceCode(code)
+                setStep(2)
+              }}
             />
-            {name}
+          ))}
+        </div>
+      )}
+
+      {step === 2 && (<>
+        <StoryImage {...{ shareImageId, serviceCode, story }} />
+
+        <div>
+          <label>
+            Your Story
+              <br />
+            <textarea
+              id="story"
+              name="story"
+              rows="5"
+              cols="33"
+              // placeholder="My story"
+              value={story}
+              onChange={e => setStory(e.target.value)}
+            />
           </label>
-        ))}
-      </div>
+        </div>
 
-      <StoryImage {...{ shareImageId, serviceCode, story }} />
+        <div>
+          {submissionResult[0] === true && (
+            <div className="success">
+              Successfully uploaded!
+            </div>
+          )}
 
-      <div>
-        <label>
-          Your Story
-            <br />
-          <textarea
-            id="story"
-            name="story"
-            rows="5"
-            cols="33"
-            // placeholder="My story"
-            value={story}
-            onChange={onChange(setStory)}
-          />
-        </label>
-      </div>
+          {submissionResult[0] === false && (
+            <div className="error">
+              {submissionResult[1]}
+            </div>
+          )}
 
-      <div>
-        {submissionResult[0] === true && (
-          <div className="success">
-            Successfully uploaded!
-          </div>
-        )}
-
-        {submissionResult[0] === false && (
-          <div className="error">
-            {submissionResult[1]}
-          </div>
-        )}
-
-        {loading
-          ? <Loading />
-          : <input type="submit" value="Share" />
-        }
-      </div>
+          {loading
+            ? <Loading />
+            : <input type="submit" value="Share" />
+          }
+        </div>
+      </>)}
     </form>
   )
 }

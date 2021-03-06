@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Header from '@components/Header'
-import Form from '@components/Form'
+import ActionPane from '@components/ActionPane'
 
 export default function Homepage() {
   return (<>
@@ -15,6 +15,6 @@ export default function Homepage() {
       <a>Share these other stories if you’re not</a>
     </Link>
 
-    <Form />
+    <ActionPane />
   </>)
 }

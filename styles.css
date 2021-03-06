@@ -31,8 +31,10 @@ main {
   align-items: center;
 }
 
-.service-option {
+.service-logo {
   display: block;
+  width: 300px;
+  padding: 10px 0;
 }
 
 #share-image {
