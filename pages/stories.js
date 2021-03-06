@@ -31,8 +31,8 @@ export default function Stories({ stories }) {
 
         {stories.map(({ id }) => (
           <div key={id}>
-            <Link href={`/story/${id}`}>
-              <a>{id}</a>
+            <Link href={`/story/${id.substring(3)}`}>
+              <a>{id.substring(3)}</a>
             </Link>
           </div>
         ))}
