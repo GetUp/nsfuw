@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import Head from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import Homepage from '@components/Homepage'
 
 export async function getServerSideProps({ params: props }) {
   return {
@@ -21,14 +20,11 @@ export default function Story({ id }) {
 
         <h3>Story page for {id}!</h3>
 
-        <Link href={`/`}>
-          <a>Go home</a>
-        </Link>
+        <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} />
 
-        <Link href={`/stories`}>
-          <a>Stories</a>
-        </Link>
+        <hr className="divider" />
 
+        <Homepage />
       </main>
 
 

@@ -29,10 +29,10 @@ export default function Stories({ stories }) {
           <a>Go home</a>
         </Link>
 
-        {stories.map(({ ID }) => (
-          <div key={ID}>
-            <Link href={`/story/${ID}`}>
-              <a>{ID}</a>
+        {stories.map(({ id }) => (
+          <div key={id}>
+            <Link href={`/story/${id}`}>
+              <a>{id}</a>
             </Link>
           </div>
         ))}
