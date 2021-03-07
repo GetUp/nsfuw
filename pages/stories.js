@@ -18,7 +18,7 @@ export default function Stories({ stories }) {
 
   return (
     <div className="container">
-      <Head title="Not Safe For Unemployed Workers" />
+      <Head />
 
       <main>
         <Header title="Story page!" />

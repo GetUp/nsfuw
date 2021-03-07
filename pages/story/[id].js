@@ -22,7 +22,7 @@ export default function Story({ id, _serviceCode, story }) {
 
   return (
     <div className="container">
-      <Head title={id} />
+      <Head id={id} />
 
       <main>
         <Header title="Story page!" />

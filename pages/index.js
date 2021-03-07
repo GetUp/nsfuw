@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Head title="Not Safe For Unemployed Workers" />
+      <Head />
 
       <main>
         <Homepage />
