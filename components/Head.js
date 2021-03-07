@@ -6,7 +6,7 @@ export default function CustomHead({ id }) {
   const desc = 'Dob in your job agency – expose their cruelty'
 
   const pageUrl = id ? `${domain}/story/${id}` : domain
-  const imageUrl = id ? `https://uploads.getup.org.au/nsfuw/${id}.png` : ''
+  const imageUrl = id ? `https://uploads.getup.org.au/nsfuw/${id}.png` : 'https://cdn.getup.org.au/image_21457_full.png'
   const imageAlt = id ? 'Story about a job agency; full text on page' : desc
 
   return (
