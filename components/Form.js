@@ -36,7 +36,7 @@ export default function Form({ step, setStep, setId }) {
     }
   }
 
-  return (
+  return (<>
     <form onSubmit={handleSubmit}>
       {step === 1 && (
         <div>
@@ -56,14 +56,16 @@ export default function Form({ step, setStep, setId }) {
       )}
 
       {step === 2 && (<>
+        <input type="button" value="Back" onClick={() => setStep(1)} />
+
         <StoryImage {...{ shareImageId, serviceCode, story }} />
 
-        <div>
+        <div className="story-container">
           <label>
             Your Story
               <br />
             <textarea
-              id="story"
+              className="story"
               name="story"
               rows="5"
               cols="33"
@@ -94,5 +96,23 @@ export default function Form({ step, setStep, setId }) {
         </div>
       </>)}
     </form>
-  )
+
+    <style jsx>{`
+      .service-logo {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        cursor: pointer;
+      }
+      
+      .success {
+        background-color: lightgreen;
+      }
+      
+      .error {
+        background-color: lightpink;
+      }
+    `}</style>
+
+  </>)
 }

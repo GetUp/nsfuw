@@ -2,6 +2,7 @@ import Head from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Homepage from '@components/Homepage'
+import StoryImage from '@components/StoryImage'
 import getStory from '../../lib/getStory'
 
 export async function getServerSideProps({ params: { id } }) {
@@ -16,10 +17,7 @@ export async function getServerSideProps({ params: { id } }) {
   }
 }
 
-const src = id => `https://uploads.getup.org.au/nsfuw/${id}.png`
-
-export default function Story({ id, _serviceCode, story }) {
-
+export default function Story({ id, serviceCode, story }) {
   return (
     <div className="container">
       <Head id={id} />
@@ -27,13 +25,7 @@ export default function Story({ id, _serviceCode, story }) {
       <main>
         <Header title="Story page!" />
 
-        <h3>Story page for {id}!</h3>
-
-        <img src={src(id)} alt={story} />
-
-        <p>
-          {story}
-        </p>
+        <StoryImage {...{ serviceCode, story }} />
 
         <hr className="divider" />
 
