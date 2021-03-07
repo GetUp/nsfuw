@@ -63,7 +63,7 @@ export default function Form({ step, setStep, setId }) {
         <div className="story-container">
           <label>
             Your Story
-              <br />
+            <br />
             <textarea
               className="story"
               name="story"
@@ -105,6 +105,10 @@ export default function Form({ step, setStep, setId }) {
         cursor: pointer;
       }
       
+      .story {
+        width: 100%;
+      }
+
       .success {
         background-color: lightgreen;
       }
