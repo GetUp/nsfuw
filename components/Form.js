@@ -37,7 +37,7 @@ export default function Form({ step, setStep, setId }) {
   }
 
   return (<>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="p-4 border border-primary-500">
       {step === 1 && (
         <div>
           {services.map(({ code, name }) => (

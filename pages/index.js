@@ -3,9 +3,8 @@ import Homepage from '@components/Homepage'
 import Footer from '@components/Footer'
 
 export default function Home() {
-
   return (
-    <div className="container">
+    <div className="bg-gray-800">
       <Head />
 
       <main>
