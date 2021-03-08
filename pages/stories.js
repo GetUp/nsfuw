@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Head from '@components/Head'
 import Header from '@components/Header'
+import StoryDisplay from '@components/StoryDisplay'
 import Footer from '@components/Footer'
 import getStories from '../lib/getStories'
 
@@ -29,13 +30,9 @@ export default function Stories({ stories }) {
           <a>Go home</a>
         </Link>
 
-        {stories.map(({ id }) => (
-          <div key={id}>
-            <Link href={`/story/${id.substring(3)}`}>
-              <a>{id.substring(3)}</a>
-            </Link>
-          </div>
-        ))}
+        {stories.map(story =>
+          <StoryDisplay {...story} key={story.id} />
+        )}
 
       </main>
 
