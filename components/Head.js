@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 export default function CustomHead({ id }) {
-  const domain = 'https://nsfuw.netlify.app'
+  const domain = 'https://nsfuw.com'
   const title = 'Not Safe For Unemployed Workers'
   const desc = 'Dob in your job agency – expose their cruelty'
 
