@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "netlify dev",
+    "dev": "next",
     "build": "next build"
   },
   "dependencies": {
