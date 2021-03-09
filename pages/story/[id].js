@@ -19,21 +19,18 @@ export async function getServerSideProps({ params: { id } }) {
 
 export default function Story({ id, serviceCode, story }) {
   return (
-    <div className="container">
+    <>
       <Head id={id} />
 
-      <main>
-        <Header title="Story page!" />
+      <main className="bg-gray-800">
+        <Header size="small" />
 
         <StoryImage {...{ serviceCode, story }} />
-
-        <hr className="divider" />
 
         <Homepage />
       </main>
 
-
       <Footer />
-    </div>
+    </>
   )
 }
