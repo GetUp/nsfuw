@@ -4,22 +4,11 @@
 
 @font-face {
   font-family: Degular;
-  src: url("/fonts/Degular_Display-Semibold.ttf");
+  src: url('/fonts/Degular_Display-Semibold.ttf');
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.divider {
-  width: 75%;
-  margin: 20px 0;
+@layer components {
+  .btn {
+    @apply text-white w-max py-1 px-4 rounded-sm cursor-pointer font-medium tracking-tight;
+  }
 }

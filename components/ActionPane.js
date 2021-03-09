@@ -8,7 +8,7 @@ export default function ActionPane() {
 
   return (
     <>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2">
         {step < 3 && (
           <div className="space-y-4 leading-relaxed">
             <p>

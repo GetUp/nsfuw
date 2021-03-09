@@ -12,9 +12,7 @@ export default function Header({ title }) {
           </div>
         </a>
       </Link>
-      <h2 className="font-heading tracking-normal text-2xl md:text-4xl font-bold opacity-50 tracking-tight">
-        Dob in your job agency
-      </h2>
+      <h2 className="font-heading text-2xl md:text-4xl font-bold opacity-50">Dob in your job agency</h2>
     </header>
   )
 }
