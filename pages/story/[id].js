@@ -22,7 +22,7 @@ export default function Story({ id, serviceCode, story }) {
     <>
       <Head id={id} />
 
-      <main className="bg-gray-800">
+      <main className="bg-primary-500">
         <Header size="small" />
 
         <StoryImage {...{ serviceCode, story }} />

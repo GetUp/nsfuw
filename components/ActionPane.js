@@ -8,7 +8,7 @@ export default function ActionPane() {
 
   return (
     <>
-      <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2">
+      <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2 text-gray-900">
         {step < 3 && (
           <div className="space-y-4 leading-relaxed">
             <p>
@@ -21,7 +21,7 @@ export default function ActionPane() {
               Enough is enough. We need to expose these agencies to the public for the cruelty they enact – and we want
               to pressure their investors and politicians to stop supporting their actions.
             </p>
-            <p className="text-xl md:text-2xl font-bold text-primary-500">
+            <p className="text-xl md:text-2xl font-bold text-secondary-500">
               {' '}
               Let’s disrupt employment services and #BreakThePovertyMachine
             </p>

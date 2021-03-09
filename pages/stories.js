@@ -17,7 +17,7 @@ export async function getServerSideProps(_context) {
 
 export default function Stories({ stories }) {
   return (
-    <div className="bg-gray-800">
+    <div className="bg-primary-500">
       <Head />
 
       <main>
@@ -30,7 +30,7 @@ export default function Stories({ stories }) {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto mt-8 px-4">
           <div className="col-span-full space-y-4 mb-8">
             <h3 className="font-heading text-5xl md:text-6xl col-span-full text-secondary-500">Stories</h3>
-            <p className="text-lg md:text-2xl text-gray-200">
+            <p className="text-lg md:text-2xl text-gray-800">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut accumsan et urna eget venenatis. Etiam
               consequat pretium aliquet. In hac habitasse platea dictumst.{' '}
             </p>

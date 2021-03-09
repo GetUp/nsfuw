@@ -44,7 +44,7 @@ export default function Form({ step, setStep, setId }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="px-4 py-4 border border-primary-500 ">
+      <form onSubmit={handleSubmit} className="px-4 py-4 border border-primary-500 bg-gray-800 rounded text-white">
         {step === 1 && (
           <div>
             <div className="grid grid-cols-2 gap-4">
@@ -55,7 +55,7 @@ export default function Form({ step, setStep, setId }) {
               {services.map(({ code, name }) => (
                 <div
                   key={code}
-                  className={`p-4 bg-gray-700  transition border border-transparent rounded-sm flex items-center
+                  className={`p-4 bg-primary-700  transition border border-transparent rounded-sm flex items-center
                     ${code == serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'}
                   `}
                 >
