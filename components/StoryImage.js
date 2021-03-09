@@ -8,11 +8,7 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
               <div id={shareImageId} className="bg-secondary-500 rounded-sm border border-gray-700">
                 <div className="flex justify-between items-center bg-gray-800 p-4 h-full text-white">
                   <div className="text-xl font-medium">My Jobactive story</div>
-                  <img
-                    src={`/${serviceCode}.png`}
-                    className="w-1/3 object-contain"
-                    style={{ filter: 'brightness(200)', maxWidth: '150px' }}
-                  />
+                  <img src={`/${serviceCode}.png`} className="w-1/3 object-contain" style={{ maxWidth: '150px' }} />
                 </div>
 
                 <div className="text-white  text-2xl p-4">{story}</div>

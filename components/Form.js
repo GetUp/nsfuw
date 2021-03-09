@@ -55,7 +55,7 @@ export default function Form({ step, setStep, setId }) {
               {services.map(({ code, name }) => (
                 <div
                   key={code}
-                  className={`p-4 bg-gray-700  transition border border-transparent rounded-sm 
+                  className={`p-4 bg-gray-700  transition border border-transparent rounded-sm flex items-center
                     ${code == serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'}
                   `}
                 >
@@ -66,7 +66,6 @@ export default function Form({ step, setStep, setId }) {
                     onClick={() => {
                       setServiceCode(code)
                     }}
-                    style={{ filter: 'brightness(200) grayscale(1)' }}
                   />
                 </div>
               ))}
@@ -105,11 +104,7 @@ export default function Form({ step, setStep, setId }) {
                   if (e.target.value?.length <= maxStoryLength) setSubmissionResult([null, ''])
                 }}
               />
-              <CharsRemaining
-                className="float-right"
-                current={story.length}
-                max={maxStoryLength}
-              />
+              <CharsRemaining className="float-right" current={story.length} max={maxStoryLength} />
             </div>
 
             <div className="mt-2">
