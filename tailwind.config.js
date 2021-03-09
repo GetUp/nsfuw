@@ -6,8 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.teal,
-        secondary: colors.rose,
+        primary: {
+          400: '#FFFDE8',
+          500: '#EDF2BD',
+          600: '#E8E3BC',
+        },
+        secondary: {
+          500: '#FF368F',
+        },
         gray: colors.coolGray,
       },
       fontFamily: {
