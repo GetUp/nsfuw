@@ -85,12 +85,12 @@ export default function Form({ step, setStep, setId }) {
             <StoryImage {...{ shareImageId, serviceCode, story }} />
 
             <div className="space-y-2 mt-8">
-              <label htmlFor="name" className="block text-base font-medium">
+              <label htmlFor="story" className="block text-base font-medium">
                 Your Story
               </label>
               <textarea
+                id="story"
                 className="text-gray-800 p-2 w-full rounded-sm"
-                name="story"
                 rows="5"
                 cols="33"
                 placeholder="My story"
