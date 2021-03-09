@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import StoryImage from '@components/StoryImage'
+import CharsRemaining from '@components/CharsRemaining'
 import uploadImage from 'lib/uploadImage'
 import persistStory from 'lib/persistStory'
 import Loading from './Loading'
 import Link from 'next/link'
 
+const maxStoryLength = 280
 const shareImageId = 'share-image'
 const services = [
   { code: 'JA', name: 'Jobactive' },
@@ -20,6 +22,9 @@ export default function Form({ step, setStep, setId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (story.length > maxStoryLength) {
+      return setSubmissionResult([false, `Please limit your story to ${maxStoryLength} characters.`])
+    }
     setLoading(true)
     setSubmissionResult([null, ''])
     try {
@@ -95,7 +100,15 @@ export default function Form({ step, setStep, setId }) {
                 cols="33"
                 placeholder="My story"
                 value={story}
-                onChange={(e) => setStory(e.target.value)}
+                onChange={(e) => {
+                  setStory(e.target.value)
+                  if (e.target.value?.length <= maxStoryLength) setSubmissionResult([null, ''])
+                }}
+              />
+              <CharsRemaining
+                className="float-right"
+                current={story.length}
+                max={maxStoryLength}
               />
             </div>
 
@@ -108,7 +121,7 @@ export default function Form({ step, setStep, setId }) {
 
               {submissionResult[0] === false && (
                 <div className="py-1 px-2 text-sm bg-red-200 rounded-sm text-red-800 border border-red-500">
-                  Error: {submissionResult[1]}
+                  {submissionResult[1]}
                 </div>
               )}
 
