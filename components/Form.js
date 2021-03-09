@@ -49,12 +49,12 @@ export default function Form({ step, setStep, setId }) {
               </div>
               {services.map(({ code, name }) => (
                 <div
+                  key={code}
                   className={`p-4 bg-gray-700  transition border border-transparent rounded-sm 
                     ${code == serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'}
                   `}
                 >
                   <img
-                    key={code}
                     src={`/${code}.png`}
                     alt={`${name} logo`}
                     className="service-logo"
