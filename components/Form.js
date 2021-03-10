@@ -106,11 +106,9 @@ export default function Form({ step, setStep, setId }) {
               />
               <div className="flex items-center space-x-2">
                 <CharsRemaining
-                  className="transform -rotate-90"
                   current={story.length}
                   max={maxStoryLength}
                 />
-                <p className="text-base opacity-50">{maxStoryLength - story.length} characters remaining</p>
               </div>
             </div>
 

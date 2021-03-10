@@ -1,6 +1,7 @@
-const r = 12
+const r = 16
+const boxSize = 37
 const circleLength = 2 * Math.PI * r
-const circleProps = { className: 'circle', cx: '50%', cy: '50%', r }
+const circleProps = { className: 'circle', cx: '50%', cy: '50%', transform: `rotate(-90) translate(-${boxSize},0)`, r }
 const emptyStyle = { stroke: 'rgba(255,255,255,0.15)' }
 const colour = remaining => remaining <= 0 ? 'red' : remaining <= 20 ? 'orange' : '#EB4A8E'
 
@@ -10,7 +11,7 @@ export default function CharsRemaining({ className, current, max }) {
   const emptySegment = circleLength - filledSegment > 0 ? circleLength - filledSegment : 0
   const fillStyle = {
     stroke: colour(remaining),
-    strokeDasharray: `${filledSegment} ${emptySegment}`
+    strokeDasharray: `${filledSegment} ${emptySegment}`,
   }
   const textStyle = { fill: colour(remaining) }
 
@@ -37,8 +38,8 @@ export default function CharsRemaining({ className, current, max }) {
     </svg>
     <style jsx>{`
       svg {
-        width: 32px;
-        height: 32px;
+        width: ${boxSize}px;
+        height: ${boxSize}px;
       }
       .circle {
         fill: transparent;
