@@ -3,12 +3,12 @@ import Form from './Form'
 import Share from './Share'
 
 export default function ActionPane() {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(1)
   const [id, setId] = useState('')
 
   return (
     <>
-      <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2 text-gray-900">
+      <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2 text-gray-900 w-full">
         {step < 3 && (
           <div className="space-y-4 leading-relaxed">
             <p>

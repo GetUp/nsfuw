@@ -4,6 +4,7 @@ import Footer from '@components/Footer'
 import Homepage from '@components/Homepage'
 import StoryImage from '@components/StoryImage'
 import getStory from '../../lib/getStory'
+import Nav from '@components/Nav'
 
 export async function getServerSideProps({ params: { id } }) {
   const { serviceCode, story } = await getStory(id)
@@ -21,6 +22,7 @@ export default function Story({ id, serviceCode, story }) {
   return (
     <>
       <Head id={id} />
+      <Nav />
 
       <main className="bg-primary-500">
         <Header size="small" />
