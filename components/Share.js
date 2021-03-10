@@ -31,7 +31,7 @@ export default function Share({ step, setStep, id }) {
 
   return (
     <>
-      <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} />
+      <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} className="mb-12" />
       <div className="space-y-2">
         <div>
           <FacebookShareButton {...{ url, quote, hashtag, className }}>

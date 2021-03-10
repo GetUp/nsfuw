@@ -3,7 +3,7 @@ import Form from './Form'
 import Share from './Share'
 
 export default function ActionPane() {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(2)
   const [id, setId] = useState('')
 
   return (

@@ -20,11 +20,15 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
         </>
       ) : (
         <div id={shareImageId} className="share-image-container">
-          <div className="logo-container">
-            <img src={`/${serviceCode}.png`} className="logo" />
+          <div className="bg-secondary-500">
+            <div className="flex justify-between items-center bg-gray-800 p-4 h-full text-white">
+              <div className="text-xl font-medium">My Jobactive story</div>
+              <img src={`/${serviceCode}.png`} className="w-1/3 object-contain" style={{ maxWidth: '150px' }} />
+            </div>
+
+            <div className="story-display p-4">{story}</div>
+            <div className="p-4 text-gray-900 font-bold tracking-tight text-base">#80ADAY #BTPM #NSFUW</div>
           </div>
-          <div className="story-display">{story}</div>
-          <div className="hash-tags">#80ADAY #BTPM #NSFUW</div>
         </div>
       )}
     </>
