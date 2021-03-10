@@ -55,7 +55,7 @@ export default function Form({ step, setStep, setId }) {
               {services.map(({ code, name }) => (
                 <div
                   key={code}
-                  className={`p-4 bg-primary-700  transition border border-transparent rounded-sm flex items-center
+                  className={`p-4 bg-primary-700 h-32 transition border border-transparent rounded-sm flex items-center bg-gray-700
                     ${code == serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'}
                   `}
                 >
@@ -75,7 +75,7 @@ export default function Form({ step, setStep, setId }) {
             <hr className="opacity-20 my-8" />
 
             <Link href={`/stories`}>
-              <a className="block underline mb-4 opacity-70 hover:no-underline hover:opacity-100">
+              <a className="block text-base underline mb-4 opacity-60 hover:no-underline hover:opacity-100">
                 Share these other stories if you’re not
               </a>
             </Link>
