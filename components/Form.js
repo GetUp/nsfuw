@@ -106,7 +106,7 @@ export default function Form({ step, setStep, setId }) {
               />
               <div className="flex items-center space-x-2">
                 <CharsRemaining
-                  className="float-right transform -rotate-90"
+                  className="transform -rotate-90"
                   current={story.length}
                   max={maxStoryLength}
                 />
