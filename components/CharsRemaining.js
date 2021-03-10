@@ -1,7 +1,7 @@
-const r = 18
+const r = 12
 const circleLength = 2 * Math.PI * r
 const circleProps = { className: "circle", cx: "50%", cy: "50%", r }
-const emptyStyle = { stroke: 'white' }
+const emptyStyle = { stroke: 'rgba(255,255,255,0.15)' }
 const colour = remaining => remaining <= 0 ? 'red' : remaining <= 20 ? 'orange' : '#EB4A8E'
 
 export default function CharsRemaining({ className, current, max }) {
@@ -37,8 +37,8 @@ export default function CharsRemaining({ className, current, max }) {
     </svg>
     <style jsx>{`
       svg {
-        width: 10vmin;
-        height: 10vmin;
+        width: 32px;
+        height: 32px;
       }
       .circle {
         fill: transparent;

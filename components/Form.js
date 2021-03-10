@@ -104,7 +104,14 @@ export default function Form({ step, setStep, setId }) {
                   if (e.target.value?.length <= maxStoryLength) setSubmissionResult([null, ''])
                 }}
               />
-              <CharsRemaining className="float-right" current={story.length} max={maxStoryLength} />
+              <div className="flex items-center space-x-2">
+                <CharsRemaining
+                  className="float-right transform -rotate-90"
+                  current={story.length}
+                  max={maxStoryLength}
+                />
+                <p className="text-base opacity-50">{maxStoryLength - story.length} characters remaining</p>
+              </div>
             </div>
 
             <div className="mt-2">

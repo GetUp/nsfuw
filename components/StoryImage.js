@@ -21,7 +21,7 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
       ) : (
         <div id={shareImageId} className="share-image-container">
           <div className="logo-container">
-            <img src={`/${serviceCode}-header.png`} className="logo" />
+            <img src={`/${serviceCode}.png`} className="logo" />
           </div>
           <div className="story-display">{story}</div>
           <div className="hash-tags">#80ADAY #BTPM #NSFUW</div>
