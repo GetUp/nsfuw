@@ -3,8 +3,8 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Homepage from '@components/Homepage'
 import StoryImage from '@components/StoryImage'
-import getStory from '../../lib/getStory'
 import Nav from '@components/Nav'
+import getStory from 'lib/getStory'
 
 export async function getServerSideProps({ params: { id } }) {
   const { serviceCode, story } = await getStory(id)

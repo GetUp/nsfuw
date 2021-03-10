@@ -1,18 +1,14 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import StoryImage from '@components/StoryImage'
 import CharsRemaining from '@components/CharsRemaining'
+import Loading from '@components/Loading'
 import uploadImage from 'lib/uploadImage'
 import persistStory from 'lib/persistStory'
-import Loading from './Loading'
-import Link from 'next/link'
+import { services } from 'lib/services'
 
 const maxStoryLength = 280
 const shareImageId = 'share-image'
-const services = [
-  { code: 'JA', name: 'Jobactive' },
-  { code: 'PN', name: 'ParentsNext' },
-  { code: 'DES', name: 'Disability Employment Services' },
-]
 
 export default function Form({ step, setStep, setId }) {
   const [serviceCode, setServiceCode] = useState('JA')
