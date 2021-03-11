@@ -42,7 +42,7 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
           <div className="bg-secondary-500 h-full">
             <StoryHeader {...{ serviceCode }} />
             <div style={{ height: 'calc(100% - 64px' }}>
-              <div className="p-4 text-white" id="story">
+              <div className="p-4 text-white">
                 {story}
               </div>
               <div className="p-4 text-gray-900 font-bold tracking-tight text-base">

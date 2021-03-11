@@ -134,10 +134,6 @@ export default function Form({ step, setStep, setId }) {
           padding: 10px 0;
         }
 
-        .story {
-          width: 100%;
-        }
-
         .success {
           background-color: lightgreen;
         }
