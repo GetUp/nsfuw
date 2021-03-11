@@ -51,17 +51,15 @@ export default function Form({ step, setStep, setId }) {
               {services.map(({ code, name }) => (
                 <div
                   key={code}
+                  onClick={() => setServiceCode(code)}
                   className={`p-4 bg-primary-700 h-32 transition border border-transparent rounded-sm flex items-center bg-gray-700
-                    ${code == serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'}
+                    ${code === serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'} cursor-pointer
                   `}
                 >
                   <img
                     src={`/${code}.png`}
                     alt={`${name} logo`}
                     className="service-logo"
-                    onClick={() => {
-                      setServiceCode(code)
-                    }}
                   />
                 </div>
               ))}
@@ -132,7 +130,6 @@ export default function Form({ step, setStep, setId }) {
           display: block;
           width: 100%;
           padding: 10px 0;
-          cursor: pointer;
         }
 
         .story {
