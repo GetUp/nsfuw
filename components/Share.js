@@ -13,14 +13,14 @@ import {
 export default function Share({ step, setStep, id }) {
   const [url, setUrl] = useState('')
   const message = 'Not Safe For Unemployed Workers.'
-  const hashtags = ['#80ADAY', '#BTPM', '#NSFUW']
+  const hashtags = ['80ADAY', 'BTPM', 'NSFUW']
 
   useEffect(() => {
     setUrl(`https://${location.host}/story/${id}`)
   }, [])
 
   const [quote, title, body] = [message, message, message]
-  const hashtag = hashtags[0]
+  const hashtag = `#${hashtags[0]}`
   const round = false
   const size = 42
   const borderRadius = 5
