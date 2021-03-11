@@ -11,10 +11,10 @@ import {
 } from 'react-share'
 import { event } from 'lib/gTag'
 
+export const hashtags = ['80ADAY', 'BTPM', 'NSFUW']
 export default function Share({ step, setStep, id }) {
   const [url, setUrl] = useState('')
   const message = 'Not Safe For Unemployed Workers.'
-  const hashtags = ['80ADAY', 'BTPM', 'NSFUW']
 
   useEffect(() => {
     setUrl(`https://${location.host}/story/${id}`)

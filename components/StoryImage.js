@@ -1,4 +1,7 @@
 import { nameFromCode } from 'lib/services'
+import { hashtags } from './Share'
+
+const hashes = hashtags.map(t => `#${t}`).join(' ')
 
 const StoryHeader = ({ serviceCode }) => {
   const name = nameFromCode(serviceCode)
@@ -24,9 +27,13 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
             <div id={shareImageId} className="bg-secondary-500 rounded-sm border border-gray-700">
               <StoryHeader {...{ serviceCode }} />
 
-              <div className="text-white text-2xl p-4">{story}</div>
+              <div className="text-white text-2xl p-4">
+                {story}
+              </div>
 
-              <div className="p-4 text-gray-900 font-bold tracking-tight">#80ADAY #BTPM #NSFUW</div>
+              <div className="p-4 text-gray-900 font-bold tracking-tight">
+                {hashes}
+              </div>
             </div>
           </div>
         </div>
@@ -38,7 +45,9 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
               <div className="p-4 text-white" id="story">
                 {story}
               </div>
-              <div className="p-4 text-gray-900 font-bold tracking-tight text-base">#80ADAY #BTPM #NSFUW</div>
+              <div className="p-4 text-gray-900 font-bold tracking-tight text-base">
+                {hashes}
+              </div>
             </div>
           </div>
         </div>
