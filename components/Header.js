@@ -9,7 +9,7 @@ export default function Header({ size }) {
           <Link href="/">
             <a>
               <div className="max-w-3xl mb-4">
-                <Logo />
+                <Logo style={{ maxWidth: '96vw' }} />
               </div>
             </a>
           </Link>
@@ -20,7 +20,7 @@ export default function Header({ size }) {
           <Link href="/">
             <a>
               <div className="max-w-sm mb-4">
-                <Logo />
+                <Logo style={{ maxWidth: '96vw' }} />
               </div>
             </a>
           </Link>

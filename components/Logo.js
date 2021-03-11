@@ -1,5 +1,5 @@
-const Logo = ({ props }) => (
-  <svg width="719" height="143" viewBox="0 0 719 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Logo = (props) => (
+  <svg {...props} width="719" height="143" viewBox="0 0 719 143" fill="none" xmlns="http://www.w3.org/2000/svg">
     <title>Not Safe For Unemployed Workers</title>
     <rect y="125" width="719" height="18" fill="#FF368F" />
     <path
