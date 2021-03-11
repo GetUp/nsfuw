@@ -34,7 +34,7 @@ export default function Form({ step, setStep, setId }) {
       setTimeout(() => setStep(3), 1000)
     } catch (error) {
       console.error(error)
-      setSubmissionResult([false, JSON.stringify(error.message)])
+      setSubmissionResult([false, `An unknown error has occurred; please try again.`])
     } finally {
       setLoading(false)
     }
