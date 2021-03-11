@@ -6,6 +6,7 @@ import Loading from '@components/Loading'
 import uploadImage from 'lib/uploadImage'
 import persistStory from 'lib/persistStory'
 import { services } from 'lib/services'
+import { event } from 'lib/gTag'
 
 const maxStoryLength = 280
 const shareImageId = 'share-image'
@@ -29,6 +30,7 @@ export default function Form({ step, setStep, setId }) {
       await uploadImage(shareImageId, id)
       setId(id)
       setSubmissionResult([true, ''])
+      event({ category: 'action', action: 'share-story' })
       setTimeout(() => setStep(3), 1000)
     } catch (error) {
       console.error(error)
