@@ -1,18 +1,18 @@
 import { nameFromCode } from 'lib/services'
 import { hashtags } from './Share'
 
-const hashes = hashtags.map(t => `#${t}`).join(' ')
+const hashes = hashtags.map((t) => `#${t}`).join(' ')
 
-const StoryHeader = ({ serviceCode }) => {
+const StoryHeader = ({ serviceCode, isPreview }) => {
   const name = nameFromCode(serviceCode)
   return (
-    <div className="flex justify-between items-center bg-gray-800 p-4 h-16 text-white">
+    <div className="flex items-center bg-gray-800 p-4 h-16 text-white">
       <div className="text-xl font-medium">My {name} story</div>
       <img
         src={`/${serviceCode}.png`}
         alt={`${name} logo`}
-        className="w-1/3 object-contain"
-        style={{ maxWidth: '150px' }}
+        className="w-full object-contain ml-auto"
+        style={{ maxWidth: '150px', height: '29px' }}
       />
     </div>
   )
@@ -27,13 +27,9 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
             <div id={shareImageId} className="bg-secondary-500 rounded-sm border border-gray-700">
               <StoryHeader {...{ serviceCode }} />
 
-              <div className="text-white text-2xl p-4">
-                {story}
-              </div>
+              <div className="text-white text-2xl p-4">{story}</div>
 
-              <div className="p-4 text-gray-900 font-bold tracking-tight">
-                {hashes}
-              </div>
+              <div className="p-4 text-gray-900 font-bold tracking-tight">{hashes}</div>
             </div>
           </div>
         </div>
@@ -42,12 +38,8 @@ export default function StoryImage({ shareImageId = 'not-the-share-image', servi
           <div className="bg-secondary-500 h-full">
             <StoryHeader {...{ serviceCode }} />
             <div style={{ height: 'calc(100% - 64px' }}>
-              <div className="p-4 text-white">
-                {story}
-              </div>
-              <div className="p-4 text-gray-900 font-bold tracking-tight text-base">
-                {hashes}
-              </div>
+              <div className="p-4 text-white">{story}</div>
+              <div className="p-4 text-gray-900 font-bold tracking-tight text-base">{hashes}</div>
             </div>
           </div>
         </div>
