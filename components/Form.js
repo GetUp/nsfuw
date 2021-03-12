@@ -16,7 +16,7 @@ const shareImageId = 'share-image'
 
 export default function Form({ step, setStep, setId }) {
   const [serviceCode, setServiceCode] = useState('JA')
-  const [story, setStory] = useState('Your story here')
+  const [story, setStory] = useState('')
   const [submissionResult, setSubmissionResult] = useState([null, '']) // success bool, message
   const [loading, setLoading] = useState(false)
   const $story = useRef(null)
@@ -138,7 +138,11 @@ export default function Form({ step, setStep, setId }) {
               {loading ? (
                 <Loading />
               ) : (
-                <button type="submit" className="btn bg-secondary-500 mt-8 flex items-center">
+                <button
+                  type="submit"
+                  className="btn bg-secondary-500 mt-8 flex items-center disabled:bg-gray-700"
+                  disabled={story.length <= 3}
+                >
                   Share <FiArrowUpRight className="h-6 w-6 ml-0.5" />
                 </button>
               )}
