@@ -12,7 +12,7 @@ import {
 import { event } from 'lib/gTag'
 
 export const hashtags = ['80ADAY', 'BTPM', 'NSFUW']
-export default function Share({ step, setStep, id }) {
+export default function Share({ step, setStep, id, preview = true, className = '' }) {
   const [url, setUrl] = useState('')
   const message = 'Not Safe For Unemployed Workers.'
 
@@ -25,35 +25,35 @@ export default function Share({ step, setStep, id }) {
   const round = false
   const size = 42
   const borderRadius = 5
-  const className = 'flex items-center space-x-2 text-sm hover:underline'
+  const btnClassNames = 'flex items-center space-x-2 text-sm hover:underline'
   const whatsappWindow = { windowWidth: 624, windowHeight: 590 }
   const openShareDialogOnClick = true // force new window for email
-  const onClick = e => event({ category: 'share', action: e.target.innerText })
+  const onClick = (e) => event({ category: 'share', action: e.target.innerText })
 
   return (
     <>
-      <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} className="mb-12" />
-      <div className="space-y-2">
+      {preview && <img src={`https://uploads.getup.org.au/nsfuw/${id}.png`} className="mb-12" />}
+      <div className={`space-y-2 ${className}`}>
         <div>
-          <FacebookShareButton {...{ url, quote, hashtag, onClick, className }}>
+          <FacebookShareButton {...{ url, quote, hashtag, onClick, className: btnClassNames }}>
             <FacebookIcon {...{ size, borderRadius, round }} />
             <span className="text-base">Share on Facebook</span>
           </FacebookShareButton>
         </div>
         <div>
-          <TwitterShareButton {...{ url, title, hashtags, onClick, className }}>
+          <TwitterShareButton {...{ url, title, hashtags, onClick, className: btnClassNames }}>
             <TwitterIcon {...{ size, borderRadius, round }} />
             <span className="text-base">Share on Twitter</span>
           </TwitterShareButton>
         </div>
         <div>
-          <WhatsappShareButton {...{ url, title, onClick, className, ...whatsappWindow }}>
+          <WhatsappShareButton {...{ url, title, onClick, className: btnClassNames, ...whatsappWindow }}>
             <WhatsappIcon {...{ size, borderRadius, round }} />
             <span className="text-base">Share via WhatsApp</span>
           </WhatsappShareButton>
         </div>
         <div>
-          <EmailShareButton {...{ url, body, openShareDialogOnClick, onClick, className }}>
+          <EmailShareButton {...{ url, body, openShareDialogOnClick, onClick, className: btnClassNames }}>
             <EmailIcon {...{ size, borderRadius, round }} />
             <span className="text-base">Share via Email</span>
           </EmailShareButton>
