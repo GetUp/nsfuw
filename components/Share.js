@@ -9,10 +9,13 @@ import {
   WhatsappIcon,
   EmailIcon,
 } from 'react-share'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { FiClipboard } from '@react-icons/all-files/fi/FiClipboard'
 import { event } from 'lib/gTag'
 
 export const hashtags = ['80ADAY', 'BTPM', 'NSFUW']
-export default function Share({ step, setStep, id, preview = true, className = '' }) {
+export default function Share({ id, preview = true, className = '' }) {
+  const [copied, setCopied] = useState(false)
   const [url, setUrl] = useState('')
   const message = 'Not Safe For Unemployed Workers.'
 
@@ -29,6 +32,10 @@ export default function Share({ step, setStep, id, preview = true, className = '
   const whatsappWindow = { windowWidth: 624, windowHeight: 590 }
   const openShareDialogOnClick = true // force new window for email
   const onClick = (e) => event({ category: 'share', action: e.target.innerText })
+  const onCopy = () => {
+    setCopied(true)
+    setTimeout(() => setCopied(false), 4000)
+  }
 
   const Buttons = () => (
     <div className={`space-y-2 ${className}`}>
@@ -55,6 +62,16 @@ export default function Share({ step, setStep, id, preview = true, className = '
           <EmailIcon {...{ size, borderRadius, round }} />
           <span className="text-base">Share via Email</span>
         </EmailShareButton>
+      </div>
+      <div>
+        <CopyToClipboard text={url} {...{ onCopy }}>
+          <button className={btnClassNames}>
+            <FiClipboard className="h-6 w-6 ml-1" style={{ width: size, height: size }} />
+            <span className="text-base">Copy to clipboard</span>
+          </button>
+        </CopyToClipboard>
+        {'  '}
+        {copied ? <span style={{ color: 'red' }}>[copied]</span> : null}
       </div>
     </div>
   )
