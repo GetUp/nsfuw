@@ -1,6 +1,6 @@
 import Head from '@components/Head'
 import Header from '@components/Header'
-import Homepage from '@components/Homepage'
+import ActionPane from '@components/ActionPane'
 import Footer from '@components/Footer'
 import Nav from '@components/Nav'
 
@@ -12,7 +12,7 @@ export default function Home() {
 
       <main>
         <Header />
-        <Homepage />
+        <ActionPane />
       </main>
 
       <Footer />

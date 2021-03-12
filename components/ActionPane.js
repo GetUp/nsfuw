@@ -7,7 +7,7 @@ export default function ActionPane() {
   const [id, setId] = useState('')
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center max-w-screen-xl w-full mx-auto text-white text-lg md:text-xl py-12 px-4 pb-24">
       <div className="grid gap-8 md:gap-16 lg:gap-32 md:grid-cols-2 text-gray-900 w-full">
         {step < 3 && (
           <div className="space-y-4 leading-relaxed">
@@ -36,6 +36,6 @@ export default function ActionPane() {
           <Share {...{ step, setStep, id }} />
         )}
       </div>
-    </>
+    </div>
   )
 }
