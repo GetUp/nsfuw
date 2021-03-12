@@ -27,9 +27,14 @@ export default function ActionPane() {
             </p>
           </div>
         )}
-        <div className="">
-          {step < 3 ? <Form {...{ step, setStep, setId }} /> : <Share {...{ step, setStep, id }} />}
-        </div>
+
+        {step < 3 ? (
+          <div className="">
+            <Form {...{ step, setStep, setId }} />
+          </div>
+        ) : (
+          <Share {...{ step, setStep, id }} />
+        )}
       </div>
     </>
   )
