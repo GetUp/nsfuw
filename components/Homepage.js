@@ -5,7 +5,7 @@ import ActionPane from '@components/ActionPane'
 export default function Homepage() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center max-w-screen-xl w-full mx-auto text-white text-lg md:text-xl py-12 px-4">
+      <div className="flex flex-col justify-center items-center max-w-screen-xl w-full mx-auto text-white text-lg md:text-xl py-12 px-4 pb-24">
         <ActionPane />
       </div>
     </>

@@ -9,6 +9,6 @@
 
 @layer components {
   .btn {
-    @apply text-white w-max py-1 px-4 rounded-sm cursor-pointer font-medium tracking-tight;
+    @apply text-white w-max py-2 px-4 rounded-sm cursor-pointer font-medium tracking-tight;
   }
 }
