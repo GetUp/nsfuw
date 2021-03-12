@@ -5,11 +5,11 @@ import Share from '@components/Share'
 
 const hashes = hashtags.map((t) => `#${t}`).join(' ')
 
-const StoryHeader = ({ serviceCode, isPreview }) => {
+const StoryHeader = ({ serviceCode }) => {
   const name = nameFromCode(serviceCode)
   return (
     <div className="flex items-center bg-gray-800 p-4 h-16 text-white">
-      <div className="text-xl font-medium">My {name} story</div>
+      <div className="text-base font-medium">My {name} story</div>
       <img
         src={`/${serviceCode}.png`}
         alt={`${name} logo`}
