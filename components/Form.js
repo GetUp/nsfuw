@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import StoryImage from '@components/StoryImage'
 import CharsRemaining from '@components/CharsRemaining'
@@ -16,6 +16,7 @@ export default function Form({ step, setStep, setId }) {
   const [story, setStory] = useState('Your story here')
   const [submissionResult, setSubmissionResult] = useState([null, '']) // success bool, message
   const [loading, setLoading] = useState(false)
+  const $story = useRef(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -39,6 +40,10 @@ export default function Form({ step, setStep, setId }) {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    step === 2 && $story.current.focus()
+  }, [step])
 
   return (
     <>
@@ -72,7 +77,7 @@ export default function Form({ step, setStep, setId }) {
 
             <Link href={`/stories`}>
               <a className="block text-base underline mb-4 opacity-60 hover:no-underline hover:opacity-100">
-                Share these other stories if you’re not
+              Support others by sharing their stories
               </a>
             </Link>
           </div>
@@ -80,33 +85,41 @@ export default function Form({ step, setStep, setId }) {
 
         {step === 2 && (
           <>
-            <input type="button" value="Back" className="btn bg-gray-700 mb-8" onClick={() => setStep(1)} />
+            <input type="button" value="Back" className="btn bg-gray-700 mb-4" onClick={() => setStep(1)} />
 
-            <StoryImage {...{ shareImageId, serviceCode, story }} />
 
-            <div className="space-y-2 mt-8">
-              <label htmlFor="story" className="block text-base font-medium">
-                Your Story
-              </label>
+            <div className="space-y-2 mb-8">
+              <div className="flex items-center justify-between">
+                <label htmlFor="story" className="block text-base font-medium opacity-70">
+                  Your Story
+                </label>
+                <div>
+                  <CharsRemaining
+                    current={story.length}
+                    max={maxStoryLength}
+                  />
+                </div>
+              </div>
               <textarea
                 id="story"
                 className="text-gray-800 p-2 w-full rounded-sm"
                 rows="5"
                 cols="33"
-                placeholder="My story"
-                value={story}
+                placeholder="Your story here"
+                ref={$story}
                 onChange={(e) => {
                   setStory(e.target.value)
                   if (e.target.value?.length <= maxStoryLength) setSubmissionResult([null, ''])
                 }}
               />
-              <div className="flex items-center space-x-2">
-                <CharsRemaining
-                  current={story.length}
-                  max={maxStoryLength}
-                />
-              </div>
             </div>
+            <p className="block text-base font-medium opacity-70">
+              Preview
+            </p>
+            <div className="border border-gray-500 mt-2">
+              <StoryImage {...{ shareImageId, serviceCode, story }} />
+            </div>
+
 
             <div className="mt-2">
               {submissionResult[0] === true && (
