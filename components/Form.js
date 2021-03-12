@@ -27,7 +27,7 @@ export default function Form({ step, setStep, setId }) {
     try {
       const response = await persistStory({ serviceCode, story })
       const id = response.id.substring(3)
-      await uploadImage(shareImageId, id)
+      await uploadImage(shareImageId, id, serviceCode)
       setId(id)
       setSubmissionResult([true, ''])
       event({ category: 'action', action: 'share-story' })
