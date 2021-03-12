@@ -7,6 +7,9 @@ import uploadImage from 'lib/uploadImage'
 import persistStory from 'lib/persistStory'
 import { services } from 'lib/services'
 import { event } from 'lib/gTag'
+import { FiArrowRight } from '@react-icons/all-files/fi/FiArrowRight'
+import { FiArrowUpRight } from '@react-icons/all-files/fi/FiArrowUpRight'
+import { FiArrowLeftCircle } from '@react-icons/all-files/fi/FiArrowLeftCircle'
 
 const maxStoryLength = 280
 const shareImageId = 'share-image'
@@ -60,24 +63,24 @@ export default function Form({ step, setStep, setId }) {
                   key={code}
                   onClick={() => setServiceCode(code)}
                   className={`p-4 bg-primary-700 h-32 transition border border-transparent rounded-sm flex items-center bg-gray-700
-                    ${code === serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'} cursor-pointer
+                    ${
+                      code === serviceCode ? 'bg-secondary-500' : 'hover:bg-gray-600 hover:border-gray-500'
+                    } cursor-pointer
                   `}
                 >
-                  <img
-                    src={`/${code}.png`}
-                    alt={`${name} logo`}
-                    className="service-logo"
-                  />
+                  <img src={`/${code}.png`} alt={`${name} logo`} className="service-logo" />
                 </div>
               ))}
             </div>
-            <input type="button" value="Next" className="btn bg-secondary-500 mt-8" onClick={() => setStep(2)} />
+            <button className="btn bg-secondary-500 mt-8 flex items-center" onClick={() => setStep(2)}>
+              Next <FiArrowRight className="h-6 w-6 ml-1" />
+            </button>
 
             <hr className="opacity-20 my-8" />
 
             <Link href={`/stories`}>
               <a className="block text-base underline mb-4 opacity-60 hover:no-underline hover:opacity-100">
-              Support others by sharing their stories
+                Support others by sharing their stories
               </a>
             </Link>
           </div>
@@ -85,19 +88,20 @@ export default function Form({ step, setStep, setId }) {
 
         {step === 2 && (
           <>
-            <input type="button" value="Back" className="btn bg-gray-700 mb-4" onClick={() => setStep(1)} />
-
-
+            <button
+              value="Back"
+              className="bg-transparent mb-2 opacity-50 flex text-base hover:opacity-100"
+              onClick={() => setStep(1)}
+            >
+              <FiArrowLeftCircle className="h-6 w-6 mr-1" /> Back
+            </button>
             <div className="space-y-2 mb-8">
-              <div className="flex items-center justify-between">
-                <label htmlFor="story" className="block text-base font-medium opacity-70">
+              <div className="flex items-end justify-between">
+                <label htmlFor="story" className="block text-sm font-medium">
                   Your Story
                 </label>
                 <div>
-                  <CharsRemaining
-                    current={story.length}
-                    max={maxStoryLength}
-                  />
+                  <CharsRemaining current={story.length} max={maxStoryLength} />
                 </div>
               </div>
               <textarea
@@ -113,13 +117,10 @@ export default function Form({ step, setStep, setId }) {
                 }}
               />
             </div>
-            <p className="block text-base font-medium opacity-70">
-              Preview
-            </p>
+            <p className="block text-sm font-medium">Preview</p>
             <div className="border border-gray-500 mt-2">
               <StoryImage {...{ shareImageId, serviceCode, story }} />
             </div>
-
 
             <div className="mt-2">
               {submissionResult[0] === true && (
@@ -134,7 +135,13 @@ export default function Form({ step, setStep, setId }) {
                 </div>
               )}
 
-              {loading ? <Loading /> : <input type="submit" value="Share" className="btn bg-secondary-500 mt-8" />}
+              {loading ? (
+                <Loading />
+              ) : (
+                <button type="submit" className="btn bg-secondary-500 mt-8 flex items-center">
+                  Share <FiArrowUpRight className="h-6 w-6 ml-0.5" />
+                </button>
+              )}
             </div>
           </>
         )}
